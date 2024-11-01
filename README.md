@@ -57,7 +57,9 @@ cd flash_detector
 ```bash
 python -m venv venv
 source venv/bin/activate # Linux/Mac
+```
 或
+```bash
 venv\Scripts\activate # Windows
 ```
 3. 安装依赖
