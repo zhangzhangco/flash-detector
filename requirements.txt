@@ -1,0 +1,4 @@
+opencv-python>=4.5.0
+numpy>=1.19.0
+gradio>=3.0.0
+psutil>=5.8.0
