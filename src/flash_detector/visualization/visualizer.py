@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from typing import Tuple, Optional
 
-def create_diff_map(frame: np.ndarray, position: Tuple[int, int], 
+def create_diff_map(frame: np.ndarray, position: Tuple[int, int],
                    region_size: int) -> Optional[np.ndarray]:
     """创建差异热力图"""
     try:
@@ -26,7 +26,7 @@ def create_diff_map(frame: np.ndarray, position: Tuple[int, int],
         print(f"创建差异热力图失败: {str(e)}")
         return None
 
-def create_region_detail(frame: np.ndarray, x: int, y: int, 
+def create_region_detail(frame: np.ndarray, x: int, y: int,
                         region_size: int) -> Optional[np.ndarray]:
     """创建检测区域的放大图"""
     try:
@@ -39,9 +39,9 @@ def create_region_detail(frame: np.ndarray, x: int, y: int,
         region_detail = frame[y1:y2, x1:x2].copy()
         center_x = (x2-x1)//2
         center_y = (y2-y1)//2
-        cv2.line(region_detail, (center_x-10, center_y), 
+        cv2.line(region_detail, (center_x-10, center_y),
                 (center_x+10, center_y), (0,0,255), 2)
-        cv2.line(region_detail, (center_x, center_y-10), 
+        cv2.line(region_detail, (center_x, center_y-10),
                 (center_x, center_y+10), (0,0,255), 2)
 
         return region_detail

@@ -38,3 +38,6 @@ Thumbs.db
 # Project specific
 examples/sample_videos/*
 !examples/sample_videos/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/

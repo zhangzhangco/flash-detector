@@ -21,22 +21,28 @@ def format_time(seconds: float) -> str:
 def check_circularity(region: np.ndarray, threshold: float) -> bool:
     """检查区域的圆形度"""
     try:
+        # 转换为灰度图
         if len(region.shape) == 3:
             gray = cv2.cvtColor(region, cv2.COLOR_BGR2GRAY)
         else:
             gray = region
 
+        # 二值化
         _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
-        contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, 
+
+        # 找到轮廓
+        contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL,
                                      cv2.CHAIN_APPROX_SIMPLE)
 
         if not contours:
             return False
 
+        # 获取最大轮廓
         contour = max(contours, key=cv2.contourArea)
+
+        # 计算圆形度
         area = cv2.contourArea(contour)
         perimeter = cv2.arcLength(contour, True)
-        
         if perimeter == 0:
             return False
 
